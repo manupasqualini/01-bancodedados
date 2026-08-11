@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main {
@@ -10,14 +11,20 @@ public class Main {
 
         String sql;
         PreparedStatement ps;
+        ResultSet rs; //variavel qnd usa select
 
-        sql = "insert into java_categoria(categoria) values (?)";
 
-        try {
+
+        //listar todos os dados da tabela
+        sql = "SELECT * from java_categoria";
+
+        try{
             ps=connection.prepareStatement(sql);
-            ps.setString(1, "Alimentação");
-            ps.execute();
-
+            rs = ps.executeQuery();
+            while (rs.next()){
+                System.out.print("ID:" + rs.getInt("id")+"  ");
+                System.out.println("CATEGORIA: "+ rs.getString("categoria"));
+            }
         } catch (SQLException e){
             System.out.println(e.getMessage());
         }
