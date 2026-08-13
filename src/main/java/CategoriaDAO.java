@@ -25,6 +25,21 @@ public class CategoriaDAO {
         }
     }
 
+    public void listar() {
+        sql = "SELECT * from java_categoria";
+
+        try{
+            ps=connection.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                System.out.print("ID:" + rs.getInt("id")+"  ");
+                System.out.println("CATEGORIA: "+ rs.getString("categoria"));
+            }
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 
 
 

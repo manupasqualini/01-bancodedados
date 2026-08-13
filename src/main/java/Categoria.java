@@ -7,6 +7,10 @@ public class Categoria {
         this.categoria = categoria;
     }
 
+    public Categoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     public int getId() {
         return id;
     }
